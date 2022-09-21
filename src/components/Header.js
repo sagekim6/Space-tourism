@@ -3,27 +3,31 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
+    <header className="Header">
       <div>
         <img src={Logo} alt="logo" />
       </div>
       <nav>
         <ul>
           <li>
-            <span>00</span>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <span>00</span>HOME
+            </Link>
           </li>
           <li>
-            <span>01</span>
-            <Link to="/destination/">Destination</Link>
+            <Link to="/destination/">
+              <span>01</span>DESTINATION
+            </Link>
           </li>
           <li>
-            <span>02</span>
-            <Link to="/crew/">Crew</Link>
+            <Link to="/crew/">
+              <span>02</span>CREW
+            </Link>
           </li>
           <li>
-            <span>03</span>
-            <Link to="/technology/">Technology</Link>
+            <Link to="/technology/">
+              <span>03</span>TECHNOLOGY
+            </Link>
           </li>
         </ul>
       </nav>
