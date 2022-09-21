@@ -1,5 +1,12 @@
+import Header from "../components/Header";
+
 const Destination = () => {
-  return <h1>This is Destination</h1>;
+  return (
+    <>
+      <Header />
+      <h1>This is Destination</h1>
+    </>
+  );
 };
 
 export default Destination;
