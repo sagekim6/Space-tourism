@@ -1,5 +1,4 @@
 @import './reset.css';
-@import './variable.scss';
 
 :root {
   /* COLORS */
@@ -21,11 +20,6 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
-
-  /* background images */
-  --mobile: url('../assets/home/background-home-mobile.jpg');
-  --tablet:  url('../assets/home/background-home-tablet.jpg');
-  --desktop: url('../assets/home/background-home-desktop.jpg');
 }
 
 /* 에니메이션 끄기 */
@@ -49,11 +43,11 @@ html, body{
   line-height: 1.5;
 }
 
-.App{
+.bg-container{
   display: grid;
   grid-template-rows: min-content 1fr;
-    
-  background-position: bottom center;
+  min-height: 100vh;
+
   background-size: cover;
 }
 
@@ -91,22 +85,3 @@ Header{
 /* ====================================== */
 /* =========== Main Content ============= */
 /* ====================================== */
-.App{
-  height: 100vh;
-  background-image: $mobile;
-}
-
-/* medium size */
-@media (min-width: 35rem){
-  .App{
-    background-position: center center;
-    background-image: var(--tablet);
-  }
-}
-
-/* large size */
-@media (min-width: 45rem){
-  .App{
-    background-image: var(--desktop);
-  }
-}

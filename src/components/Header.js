@@ -6,21 +6,21 @@ import { useEffect } from "react";
 const Header = () => {
   const location = useLocation();
 
-  const handleBackgroundChange = () => {
-    if (location.pathname === "/destination/") {
-      console.log("/destination/");
-    } else if (location.pathname === "/crew/") {
-      console.log("/crew/");
-    } else if (location.pathname === "/technology/") {
-      console.log("/technology/");
-    } else if (location.pathname === "/") {
-      console.log("/");
-    }
-  };
+  // const handleBackgroundChange = () => {
+  //   if (location.pathname === "/destination/") {
+  //     console.log("/destination/");
+  //   } else if (location.pathname === "/crew/") {
+  //     console.log("/crew/");
+  //   } else if (location.pathname === "/technology/") {
+  //     console.log("/technology/");
+  //   } else if (location.pathname === "/") {
+  //     console.log("/");
+  //   }
+  // };
 
-  useEffect(() => {
-    handleBackgroundChange();
-  }, [location]);
+  // useEffect(() => {
+  //   handleBackgroundChange();
+  // }, [location]);
 
   return (
     <header className="Header">

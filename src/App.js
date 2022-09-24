@@ -10,7 +10,7 @@ import "./style/app.scss";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,8 +19,18 @@ function App() {
           <Route path="/technology/" element={<Technology />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
 export default App;
+
+/*
+
+목표 : 페이지별로 background image 다르게 표시하기
+
+시도1
+
+1. App 컴포넌트를 
+
+*/
