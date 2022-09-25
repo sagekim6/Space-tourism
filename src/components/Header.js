@@ -1,34 +1,36 @@
 import Logo from "../assets/shared/logo.svg";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
-import { useEffect } from "react";
+import Button from "./Button";
+import HamburgerMenu from "../assets/shared/icon-hamburger.svg";
+import CloseMenu from "../assets/shared/icon-close.svg";
 
 const Header = () => {
-  const location = useLocation();
+  const handleMobileMenuVisibiliy = () => {
+    const ul = document.querySelector(".Primary-nav");
+    const mobileMenu = document.querySelector(".Mobile-menu-toggle");
+    let visibility = ul.getAttribute("data-visible");
 
-  // const handleBackgroundChange = () => {
-  //   if (location.pathname === "/destination/") {
-  //     console.log("/destination/");
-  //   } else if (location.pathname === "/crew/") {
-  //     console.log("/crew/");
-  //   } else if (location.pathname === "/technology/") {
-  //     console.log("/technology/");
-  //   } else if (location.pathname === "/") {
-  //     console.log("/");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleBackgroundChange();
-  // }, [location]);
+    if (visibility === "false") {
+      ul.setAttribute("data-visible", true);
+      mobileMenu.querySelector("img").setAttribute("src", CloseMenu);
+    } else {
+      ul.setAttribute("data-visible", false);
+      mobileMenu.querySelector("img").setAttribute("src", HamburgerMenu);
+    }
+  };
 
   return (
     <header className="Header">
       <div>
-        <img src={Logo} alt="logo" />
+        <img src={Logo} alt="logo" className="Logo" />
       </div>
+      <Button
+        className={"Mobile-menu-toggle"}
+        onClick={handleMobileMenuVisibiliy}
+        text={<img src={HamburgerMenu} alt="mobile menu" />}
+      />
       <nav>
-        <ul>
+        <ul className="Primary-nav" data-visible="false">
           <li>
             <Link to="/">
               <span>00</span>HOME

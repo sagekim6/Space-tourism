@@ -22,6 +22,26 @@
   --ff-sans-normal: "Barlow", sans-serif;
 }
 
+/* medium size */
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    /* font-sizes */
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
+}
+
 /* 에니메이션 끄기 */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -69,14 +89,100 @@ Header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 1rem;
-  margin-top: 1rem;
+  position: relative;
+
+  .Logo{
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  }
   nav{
-    background: rgba(255, 255, 255, .3);
-    ul{
+    .Primary-nav{
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(1.5rem);
       display: flex;
-      li a span{
-        font-weight: bold;
+      flex-direction: column;
+      padding: #{"min(20rem, 15vh)"} 2rem;
+      gap: clamp(1.5rem, 5vw, 3.5rem);
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform 500ms ease-in-out;
+      li a {
+        letter-spacing: 2.7px;
+        font-family: var(--ff-sans-cond);
+        span{
+          margin-right: 0.5em;
+          font-weight: 700;
+      }
+    }
+    }
+    .Primary-nav[data-visible="true"]{
+      transform: translateX(0%);
+    }
+  }
+
+  .Mobile-menu-toggle{
+    z-index: 2000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+  }
+}
+
+/* tablet */
+@media(min-width: 35rem){
+  Header{
+    nav{
+      height: 100%;
+      .Primary-nav{
+        flex-direction: row;
+        padding: 0 3rem;
+        position: static;
+        height: inherit;
+        width: inherit;
+        transform: none;
+        transition: none;
+        align-items: center;
+        li {
+          padding: 2.1rem 0;
+          border-bottom: 0.2rem solid transparent;
+          a span{
+            display: none;
+          }
+        }
+        li:hover{
+          border-bottom: 0.2rem solid var(--clr-white);
+        }
+      }
+    }
+  }
+  .Mobile-menu-toggle{
+    display: none;
+  }
+}
+
+/* desktop */
+@media(min-width: 45rem){
+  Header{
+    nav{
+      .Primary-nav{
+        padding: 0 4rem;
+        height: 60%;
+        margin-top: 1.5rem;
+        gap: clamp(1rem, 3vw, 3rem);
+        font-size: var(--fs-200);
+        li {
+          padding: 0.9rem 0;
+          a span{
+            display: inline-block;
+          }
+        }
       }
     }
   }
