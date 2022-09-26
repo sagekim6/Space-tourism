@@ -24,13 +24,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-목표 : 페이지별로 background image 다르게 표시하기
-
-시도1
-
-1. App 컴포넌트를 
-
-*/
