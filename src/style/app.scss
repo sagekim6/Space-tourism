@@ -1,4 +1,4 @@
-@import './reset.css';
+@import "./reset.css";
 
 :root {
   /* COLORS */
@@ -54,7 +54,8 @@
   }
 }
 
-html, body{
+html,
+body {
   min-height: 100vh;
   background-color: var(--clr-black);
   color: var(--clr-white);
@@ -64,7 +65,7 @@ html, body{
   overflow-x: hidden;
 }
 
-.bg-container{
+.bg-container {
   display: grid;
   grid-template-rows: min-content 1fr;
   min-height: 100vh;
@@ -72,12 +73,12 @@ html, body{
   background-size: cover;
 }
 
-a{
+a {
   color: var(--clr-white);
   text-decoration: none;
 }
 
-img{
+img {
   max-width: 100%;
   display: block;
 }
@@ -85,23 +86,23 @@ img{
 /* ====================================== */
 /* ============== Header ================ */
 /* ====================================== */
-Header{
+.Header {
   background-color: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
 
-  .Logo{
+  .Logo {
     margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
   }
-  nav{
-    .Primary-nav{
-      background: rgba(255, 255, 255, .1);
+  nav {
+    .Primary-nav {
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(1.5rem);
       display: flex;
       flex-direction: column;
-      padding: #{"min(20rem, 15vh)"} 2rem;
+      padding: #{"min(20rem, 15vh)"} 0 #{"min(20rem, 15vh)"} 2rem;
       gap: clamp(1.5rem, 5vw, 3.5rem);
       position: fixed;
       z-index: 1000;
@@ -112,21 +113,29 @@ Header{
       transform: translateX(100%);
       transition: transform 500ms ease-in-out;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      li a {
-        letter-spacing: 2.7px;
-        font-family: var(--ff-sans-cond);
-        span{
-          margin-right: 0.5em;
-          font-weight: 700;
+      li {
+        border-right: 0.2rem solid transparent;
+        // padding: 2re 0;
+        a {
+          letter-spacing: 2.7px;
+          font-family: var(--ff-sans-cond);
+          span {
+            margin-right: 0.5em;
+            font-weight: 700;
+          }
+        }
+      }
+      li:hover {
+        border-right: 0.2rem solid rgba(255, 255, 255, 0.443);
       }
     }
-    }
-    .Primary-nav[data-visible="true"]{
+
+    .Primary-nav[data-visible="true"] {
       transform: translateX(0%);
     }
   }
 
-  .Mobile-menu-toggle{
+  .Mobile-menu-toggle {
     z-index: 2000;
     background: none;
     border: none;
@@ -138,50 +147,51 @@ Header{
 }
 
 /* tablet */
-@media(min-width: 35rem){
-  Header{
-    nav{
+@media (min-width: 35rem) {
+  .Header {
+    nav {
       height: 100%;
-      .Primary-nav{
+      .Primary-nav {
         flex-direction: row;
-        padding: 0 3rem;
         position: static;
         height: inherit;
         width: inherit;
         transform: none;
         transition: none;
         align-items: center;
+        padding: 0 2rem;
         li {
-          padding: 2.1rem 0;
+          border-right: none;
           border-bottom: 0.2rem solid transparent;
-          a span{
+          padding: 2.1rem 0;
+          a span {
             display: none;
           }
         }
-        li:hover{
-          border-bottom: 0.2rem solid var(--clr-white);
+        li:hover {
+          border-right: none;
+          border-bottom: 0.2rem solid rgba(255, 255, 255, 0.3);
         }
       }
     }
   }
-  .Mobile-menu-toggle{
+  .Mobile-menu-toggle {
     display: none;
   }
 }
 
 /* desktop */
-@media(min-width: 45rem){
-  Header{
-    nav{
-      .Primary-nav{
-        padding: 0 4rem;
-        height: 60%;
+@media (min-width: 45rem) {
+  .Header {
+    nav {
+      .Primary-nav {
+        padding-inline: clamp(3rem, 5vw, 7rem);
+        height: 70%;
         margin-top: 1.5rem;
-        gap: clamp(1rem, 3vw, 3rem);
         font-size: var(--fs-200);
         li {
-          padding: 0.9rem 0;
-          a span{
+          padding: 1.2rem 0;
+          a span {
             display: inline-block;
           }
         }
@@ -193,32 +203,32 @@ Header{
 /* ====================================== */
 /* =========== Main Content ============= */
 /* ====================================== */
-.Home{
+.Home {
   display: grid;
   text-align: center;
   padding-inline: 1rem;
   place-items: center;
   row-gap: 2rem;
-  *{
+  * {
     max-width: 45ch;
   }
-  .Intro{
+  .Intro {
     text-transform: uppercase;
     color: var(--clr-accent);
     letter-spacing: 4.75px;
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-400);
-    span{
+    span {
       color: var(--clr-white);
       font-family: var(--ff-serif);
       font-size: var(--fs-800);
       display: block;
     }
   }
-  p{
+  p {
     font-size: var(--fs-200);
   }
-  .Explore-btn{
+  .Explore-btn {
     background-color: var(--clr-white);
     color: var(--clr-black);
     font-family: var(--ff-serif);
@@ -233,8 +243,8 @@ Header{
     margin-bottom: 2rem;
     z-index: 1;
   }
-  .Explore-btn::after{
-    content: '';
+  .Explore-btn::after {
+    content: "";
     position: absolute;
     background: rgba(255, 255, 255, 0.18);
     z-index: -1;
@@ -244,51 +254,51 @@ Header{
     opacity: 0;
     transition: opacity 500ms linear, transform 750ms ease-in-out;
   }
-  .Explore-btn:hover::after{
+  .Explore-btn:hover::after {
     opacity: 1;
     transform: scale(1.4);
   }
 }
 
-@media(min-width: 35rem){
-  .Home{
+@media (min-width: 35rem) {
+  .Home {
     padding-inline: 4rem;
-    .Intro{
+    .Intro {
       font-size: var(--fs-300);
       margin-top: 2rem;
       max-width: 50ch;
-      span{
+      span {
         font-size: var(--fs-900);
       }
     }
-    p{
+    p {
       font-size: var(--fs-200);
     }
-    .Explore-btn{
+    .Explore-btn {
       aspect-ratio: 1;
       padding: 1.5em;
-    font-size: 1.3rem;
+      font-size: 1.3rem;
     }
   }
 }
 
-@media(min-width: 45rem){
-.Home{
-  grid-template-columns: 1fr 1fr;
-  text-align: left;
-  .Intro{
-    font-size: var(--fs-400);
-    span{
-      font-size: var(--fs-800);
+@media (min-width: 45rem) {
+  .Home {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    .Intro {
+      font-size: var(--fs-400);
+      span {
+        font-size: var(--fs-800);
+      }
+    }
+    p {
+      font-size: var(--fs-300);
+    }
+    .Explore-btn {
+      aspect-ratio: 1;
+      padding: 1.7em;
+      font-size: 1.7rem;
     }
   }
-  p{
-    font-size: var(--fs-300);
-  }
-  .Explore-btn{
-    aspect-ratio: 1;
-    padding: 1.7em;
-    font-size: 1.7rem;
-  }
-}
 }
