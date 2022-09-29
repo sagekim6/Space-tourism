@@ -9,7 +9,7 @@ const Destination = () => {
   return (
     <DestinationBg className="DestinationBg bg-container">
       <Header />
-      <main className="Destination">
+      <main id="content" className="Destination">
         <div>
           <h1>
             <span>01</span>

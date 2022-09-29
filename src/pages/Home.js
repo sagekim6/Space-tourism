@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <HomeBg className="HomeBg bg-container">
       <Header />
-      <main className="Home">
+      <main id="content" className="Home">
         <div>
           <h1 className="Intro">
             So, you want to travel to <span>Space</span>

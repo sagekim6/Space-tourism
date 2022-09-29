@@ -11,6 +11,9 @@ import "./style/app.scss";
 function App() {
   return (
     <>
+      <a href="#main" class="skip-to-content">
+        skip to content
+      </a>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

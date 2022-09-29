@@ -302,3 +302,18 @@ img {
     }
   }
 }
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  color: var(--clr-black);
+  background: var(--clr-white);
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}

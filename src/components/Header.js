@@ -33,22 +33,22 @@ const Header = () => {
         <ul className="Primary-nav" data-visible="false">
           <li>
             <Link to="/">
-              <span>00</span>HOME
+              <span aria-hidden="true">00</span>HOME
             </Link>
           </li>
           <li>
             <Link to="/destinations/">
-              <span>01</span>DESTINATION
+              <span aria-hidden="true">01</span>DESTINATION
             </Link>
           </li>
           <li>
             <Link to="/crews/">
-              <span>02</span>CREW
+              <span aria-hidden="true">02</span>CREW
             </Link>
           </li>
           <li>
             <Link to="/technologies/">
-              <span>03</span>TECHNOLOGY
+              <span aria-hidden="true">03</span>TECHNOLOGY
             </Link>
           </li>
         </ul>
