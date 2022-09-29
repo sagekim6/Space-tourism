@@ -6,7 +6,7 @@ import Desktop from "../assets/crew/background-crew-desktop.jpg";
 
 const Crew = () => {
   return (
-    <CrewBg className="CrewBg bg-container">
+    <CrewBg id="content" className="CrewBg bg-container">
       <Header />
       <main>
         <h1>This is Crew</h1>

@@ -6,7 +6,7 @@ import Desktop from "../assets/technology/background-technology-desktop.jpg";
 
 const Technology = () => {
   return (
-    <TechnologyBg className="TechnologyBg bg-container">
+    <TechnologyBg id="content" className="TechnologyBg bg-container">
       <Header />
       <main>
         <h1>This is Technology</h1>
