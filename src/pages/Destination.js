@@ -27,7 +27,7 @@ const Destination = () => {
   };
 
   return (
-    <DestinationBg className="DestinationBg bg-container">
+    <DestinationBg className="bg-container">
       <Header />
       <main id="content" className="Destination">
         <h1>
@@ -35,18 +35,18 @@ const Destination = () => {
           PICK YOUR DESTINATION
         </h1>
         <PlanetImg />
-        <div>
-          <Link to={"/destinations/:moon"}>MOON</Link>
-          <Link to={"/destinations/:mars"}>MARS</Link>
-          <Link to={"/destinations/:europa"}>EUROPA</Link>
-          <Link to={"/destinations/:titan"}>TITAN</Link>
-        </div>
         {planetInfo().map((el) => {
           return (
-            <section key={el.id}>
+            <article key={el.id}>
+              <div className="Destination-list">
+                <Link to={"/destinations/:moon"}>MOON</Link>
+                <Link to={"/destinations/:mars"}>MARS</Link>
+                <Link to={"/destinations/:europa"}>EUROPA</Link>
+                <Link to={"/destinations/:titan"}>TITAN</Link>
+              </div>
               <h2>{el.name}</h2>
               <p>{el.description}</p>
-              <div>
+              <div className="Destination-meta">
                 <div>
                   <h3>AVG.DISTANCE</h3>
                   <p>{el.distance}</p>
@@ -56,7 +56,7 @@ const Destination = () => {
                   <p>{el.travel}</p>
                 </div>
               </div>
-            </section>
+            </article>
           );
         })}
       </main>

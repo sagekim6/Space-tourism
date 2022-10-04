@@ -6,7 +6,7 @@ import Desktop from "../assets/home/background-home-desktop.jpg";
 
 const Home = () => {
   return (
-    <HomeBg className="HomeBg bg-container">
+    <HomeBg className="bg-container">
       <Header />
       <main id="content" className="Home">
         <div>
