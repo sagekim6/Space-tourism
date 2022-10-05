@@ -1,13 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import data from "../data.json";
 
 // Components
 import Header from "../components/Header";
-import PlanetImg from "../components/PlanetImg";
+import ImageInformation from "../components/ImageInformation";
+// Bg-image
 import Mobile from "../assets/destination/background-destination-mobile.jpg";
 import Tablet from "../assets/destination/background-destination-tablet.jpg";
 import Desktop from "../assets/destination/background-destination-desktop.jpg";
-import data from "../data.json";
+// Planet-image
+import moon from "../assets/destination/image-moon.png";
+import mars from "../assets/destination/image-mars.png";
+import europa from "../assets/destination/image-europa.png";
+import titan from "../assets/destination/image-titan.png";
 
 const Destination = () => {
   const location = useLocation();
@@ -26,6 +32,18 @@ const Destination = () => {
     }
   };
 
+  const onChangePlanetImages = () => {
+    if (planetName === "moon") {
+      return moon;
+    } else if (planetName === "mars") {
+      return mars;
+    } else if (planetName === "europa") {
+      return europa;
+    } else if (planetName === "titan") {
+      return titan;
+    }
+  };
+
   return (
     <DestinationBg className="bg-container">
       <Header />
@@ -34,7 +52,7 @@ const Destination = () => {
           <span>01</span>
           PICK YOUR DESTINATION
         </h1>
-        <PlanetImg />
+        <ImageInformation src={onChangePlanetImages()} alt={planetName} />
         {planetInfo().map((el) => {
           return (
             <article key={el.id}>

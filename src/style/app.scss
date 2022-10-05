@@ -1,5 +1,7 @@
 @import "./reset.css";
+@import "./mixin";
 @import "./destination";
+@import "./crew";
 
 :root {
   /* COLORS */
@@ -45,25 +47,6 @@
     --fs-700: 3.5rem;
     --fs-600: 2rem;
     --fs-400: 1.125rem;
-  }
-}
-
-@mixin underlined-menu($underline-gap: 1rem, $bottom: right) {
-  > * {
-    cursor: pointer;
-    padding: $underline-gap 0;
-    border: 0;
-    border-#{$bottom}: 0.2rem solid transparent;
-  }
-  > *:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-  > *:focus {
-    border-color: rgba(255, 255, 255, 1);
-  }
-  .active {
-    color: var(--clr-white);
-    border-color: rgba(255, 255, 255, 1);
   }
 }
 
@@ -202,7 +185,6 @@ img {
       order: 3;
       .Primary-nav {
         padding-inline: clamp(3rem, 13vw, 12rem);
-        // padding-right: 2rem;
         height: 65%;
         width: 100%;
         margin-block: 1.2rem;
