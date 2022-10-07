@@ -45,33 +45,35 @@ const Crew = () => {
   };
 
   return (
-    <CrewBg id="content" className="CrewBg bg-container">
+    <CrewBg id="content" className="bg-container">
       <Header />
       <main className="Crew">
         <h1>
           <span>02</span>meet your crew
         </h1>
+        <ImageInformation src={onChangeCrewImages()} alt={role} />
         {crewInfo().map((el) => {
           return (
             <section key={el.id}>
-              <ImageInformation src={onChangeCrewImages()} alt={el.role} />
-              <div>
+              <div className="Crew-lists">
                 <Link to={"/crews/:commander"}>
-                  <button>commander</button>
+                  <span>commander</span>
                 </Link>
                 <Link to={"/crews/:missionSpecialist"}>
-                  <button>missionSpecialist</button>
+                  <span>missionSpecialist</span>
                 </Link>
                 <Link to={"/crews/:pilot"}>
-                  <button>pilot</button>
+                  <span>pilot</span>
                 </Link>
                 <Link to={"/crews/:flightEngineer"}>
-                  <button>flightEngineer</button>
+                  <span>flightEngineer</span>
                 </Link>
               </div>
-              <h2>{el.role}</h2>
-              <h3>{el.name}</h3>
-              <p>{el.bio}</p>
+              <div>
+                <h2>{el.role}</h2>
+                <p>{el.name}</p>
+                <p>{el.bio}</p>
+              </div>
             </section>
           );
         })}

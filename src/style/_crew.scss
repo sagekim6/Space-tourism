@@ -2,7 +2,60 @@
 /*                  Crew                  */
 /* ====================================== */
 .Crew {
+  display: grid;
+  place-items: center;
+  row-gap: 2rem;
   h1 {
     @include numbered-title;
+  }
+
+  .Crew-lists {
+    @include dot-menu;
+    a span {
+      @include sr-only;
+    }
+  }
+
+  section {
+    text-align: center;
+  }
+
+  img {
+    max-width: 60%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (min-width: 35em) {
+  .Crew {
+    grid-template-areas:
+      "title"
+      "content"
+      "image";
+    h1 {
+      grid-area: title;
+    }
+
+    section {
+      grid-area: content;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    img {
+      grid-area: image;
+    }
+  }
+}
+
+@media (min-width: 45em) {
+  .Crew {
+    grid-template-areas:
+      "title image"
+      "content image";
+
+    img {
+      max-width: 66%;
+    }
   }
 }

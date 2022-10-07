@@ -44,6 +44,14 @@ const Destination = () => {
     }
   };
 
+  // 클릭하면 aria-selected 속성값을 false에서 true로 / true에서 false로 토글하기
+  const onSetSelcted = (e) => {
+    if (e.target.getAttribute("aria-selected") === "false") {
+      e.target.setAttribute("aria-selected", true);
+    } else {
+    }
+  };
+
   return (
     <DestinationBg className="bg-container">
       <Header />
@@ -56,11 +64,19 @@ const Destination = () => {
         {planetInfo().map((el) => {
           return (
             <article key={el.id}>
-              <div className="Destination-list">
-                <Link to={"/destinations/:moon"}>MOON</Link>
-                <Link to={"/destinations/:mars"}>MARS</Link>
-                <Link to={"/destinations/:europa"}>EUROPA</Link>
-                <Link to={"/destinations/:titan"}>TITAN</Link>
+              <div onClick={onSetSelcted} className="Destination-list">
+                <Link aria-selected="true" to={"/destinations/:moon"}>
+                  MOON
+                </Link>
+                <Link aria-selected="false" to={"/destinations/:mars"}>
+                  MARS
+                </Link>
+                <Link aria-selected="false" to={"/destinations/:europa"}>
+                  EUROPA
+                </Link>
+                <Link aria-selected="false" to={"/destinations/:titan"}>
+                  TITAN
+                </Link>
               </div>
               <h2>{el.name}</h2>
               <p>{el.description}</p>
