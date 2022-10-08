@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { memo, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import data from "../data.json";
 
@@ -20,7 +21,7 @@ const Destination = () => {
   const planetName = location.pathname.split(":")[1];
   const info = data.destinations;
 
-  const planetInfo = () => {
+  const planetInfo = useCallback(() => {
     if (planetName === "moon") {
       return [info[0]];
     } else if (planetName === "mars") {
@@ -30,9 +31,9 @@ const Destination = () => {
     } else if (planetName === "titan") {
       return [info[3]];
     }
-  };
+  }, [info, planetName]);
 
-  const onChangePlanetImages = () => {
+  const onChangePlanetImages = useCallback(() => {
     if (planetName === "moon") {
       return moon;
     } else if (planetName === "mars") {
@@ -42,15 +43,44 @@ const Destination = () => {
     } else if (planetName === "titan") {
       return titan;
     }
-  };
+  }, [planetName]);
 
-  // 클릭하면 aria-selected 속성값을 false에서 true로 / true에서 false로 토글하기
-  const onSetSelcted = (e) => {
-    if (e.target.getAttribute("aria-selected") === "false") {
-      e.target.setAttribute("aria-selected", true);
-    } else {
-    }
-  };
+  const lists = document.querySelectorAll(".Destination-list a");
+
+  // const [state, setState] = useState()
+
+  useEffect(() => {
+    lists.forEach((el) => {
+      if (el.getAttribute("data-planet") === planetName) {
+        el.setAttribute("aria-selected", true);
+      } else {
+        el.setAttribute("aria-selected", false);
+      }
+    });
+  }, [planetName, lists]);
+
+  /**
+   *
+   *  목표: 링크 클릭시 aria-selected="true"로 만들기(나머지는 false로)
+   *
+   *  data속성값이랑 param 이랑 같으면 setAttribute 속성 써서 변경하려고 했는데
+   *  data 속성은 잘 찍히는데 param이 밀려서 출력된다.(이전 값이 출력됨)
+   *  < 가능성 >
+   *  1. param 값이 업데이트가 안 된다.
+   *  2. 리렌더가 되서 계속 초기화가 된다. -> 이거!
+   *
+   *  잘 동작하긴 하는데 클릭할 때 리렌더 되면서 값이 초기화되니까 클릭을 두번해야지만 적용됨
+   *
+   */
+  // const onHandleSelcted = () => {
+  //   lists.forEach((el) => {
+  //     if (el.getAttribute("data-planet") === planetName) {
+  //       el.setAttribute("aria-selected", true);
+  //     } else {
+  //       el.setAttribute("aria-selected", false);
+  //     }
+  //   });
+  // };
 
   return (
     <DestinationBg className="bg-container">
@@ -64,17 +94,17 @@ const Destination = () => {
         {planetInfo().map((el) => {
           return (
             <article key={el.id}>
-              <div onClick={onSetSelcted} className="Destination-list">
-                <Link aria-selected="true" to={"/destinations/:moon"}>
+              <div className="Destination-list">
+                <Link data-planet="moon" to={"/destinations/:moon"}>
                   MOON
                 </Link>
-                <Link aria-selected="false" to={"/destinations/:mars"}>
+                <Link data-planet="mars" to={"/destinations/:mars"}>
                   MARS
                 </Link>
-                <Link aria-selected="false" to={"/destinations/:europa"}>
+                <Link data-planet="europa" to={"/destinations/:europa"}>
                   EUROPA
                 </Link>
-                <Link aria-selected="false" to={"/destinations/:titan"}>
+                <Link data-planet="titan" to={"/destinations/:titan"}>
                   TITAN
                 </Link>
               </div>
@@ -109,4 +139,4 @@ const DestinationBg = styled.div`
   }
 `;
 
-export default Destination;
+export default memo(Destination);

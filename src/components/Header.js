@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import HamburgerMenu from "../assets/shared/icon-hamburger.svg";
 import CloseMenu from "../assets/shared/icon-close.svg";
+import { memo, useCallback } from "react";
 
 const Header = () => {
-  const handleMobileMenuVisibiliy = () => {
+  const handleMobileMenuVisibiliy = useCallback(() => {
     const ul = document.querySelector(".Primary-nav");
     const mobileMenu = document.querySelector(".Mobile-menu-toggle");
     let visibility = ul.getAttribute("data-visible");
@@ -17,7 +18,7 @@ const Header = () => {
       ul.setAttribute("data-visible", false);
       mobileMenu.querySelector("img").setAttribute("src", HamburgerMenu);
     }
-  };
+  }, []);
 
   return (
     <header className="Header">
@@ -57,4 +58,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
