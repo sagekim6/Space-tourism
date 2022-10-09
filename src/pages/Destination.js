@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback } from "react";
 import styled from "styled-components";
 import data from "../data.json";
 
 // Components
 import Header from "../components/Header";
-import ImageInformation from "../components/ImageInformation";
+import ImageInfo from "../components/ImageInfo";
 // Bg-image
 import Mobile from "../assets/destination/background-destination-mobile.jpg";
 import Tablet from "../assets/destination/background-destination-tablet.jpg";
@@ -45,43 +45,6 @@ const Destination = () => {
     }
   }, [planetName]);
 
-  const lists = document.querySelectorAll(".Destination-list a");
-
-  // const [state, setState] = useState()
-
-  useEffect(() => {
-    lists.forEach((el) => {
-      if (el.getAttribute("data-planet") === planetName) {
-        el.setAttribute("aria-selected", true);
-      } else {
-        el.setAttribute("aria-selected", false);
-      }
-    });
-  }, [planetName, lists]);
-
-  /**
-   *
-   *  목표: 링크 클릭시 aria-selected="true"로 만들기(나머지는 false로)
-   *
-   *  data속성값이랑 param 이랑 같으면 setAttribute 속성 써서 변경하려고 했는데
-   *  data 속성은 잘 찍히는데 param이 밀려서 출력된다.(이전 값이 출력됨)
-   *  < 가능성 >
-   *  1. param 값이 업데이트가 안 된다.
-   *  2. 리렌더가 되서 계속 초기화가 된다. -> 이거!
-   *
-   *  잘 동작하긴 하는데 클릭할 때 리렌더 되면서 값이 초기화되니까 클릭을 두번해야지만 적용됨
-   *
-   */
-  // const onHandleSelcted = () => {
-  //   lists.forEach((el) => {
-  //     if (el.getAttribute("data-planet") === planetName) {
-  //       el.setAttribute("aria-selected", true);
-  //     } else {
-  //       el.setAttribute("aria-selected", false);
-  //     }
-  //   });
-  // };
-
   return (
     <DestinationBg className="bg-container">
       <Header />
@@ -90,22 +53,22 @@ const Destination = () => {
           <span>01</span>
           PICK YOUR DESTINATION
         </h1>
-        <ImageInformation src={onChangePlanetImages()} alt={planetName} />
+        <ImageInfo src={onChangePlanetImages()} alt={planetName} />
         {planetInfo().map((el) => {
           return (
             <article key={el.id}>
               <div className="Destination-list">
-                <Link data-planet="moon" to={"/destinations/:moon"}>
-                  MOON
+                <Link to={"/destinations/:moon"}>
+                  <span>Moon</span>MOON
                 </Link>
-                <Link data-planet="mars" to={"/destinations/:mars"}>
-                  MARS
+                <Link to={"/destinations/:mars"}>
+                  <span>Mars</span>MARS
                 </Link>
-                <Link data-planet="europa" to={"/destinations/:europa"}>
-                  EUROPA
+                <Link to={"/destinations/:europa"}>
+                  <span>Europa</span>EUROPA
                 </Link>
-                <Link data-planet="titan" to={"/destinations/:titan"}>
-                  TITAN
+                <Link to={"/destinations/:titan"}>
+                  <span>Titan</span>TITAN
                 </Link>
               </div>
               <h2>{el.name}</h2>

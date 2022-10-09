@@ -24,10 +24,6 @@
     color: var((--clr-white));
     border-color: rgba(255, 255, 255, 1);
   }
-  > [aria-selected="true"] {
-    color: var((--clr-white));
-    border-color: rgba(255, 255, 255, 1);
-  }
 }
 
 // screen reader only

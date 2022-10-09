@@ -4,7 +4,7 @@ import data from "../data.json";
 
 // Components
 import Header from "../components/Header";
-import ImageInformation from "../components/ImageInformation";
+import ImageInfo from "../components/ImageInfo";
 // Bg-image
 import Mobile from "../assets/crew/background-crew-mobile.jpg";
 import Tablet from "../assets/crew/background-crew-tablet.jpg";
@@ -51,7 +51,9 @@ const Crew = () => {
         <h1>
           <span>02</span>meet your crew
         </h1>
-        <ImageInformation src={onChangeCrewImages()} alt={role} />
+        <div className="Image-wrapper">
+          <ImageInfo src={onChangeCrewImages()} alt={role} />
+        </div>
         {crewInfo().map((el) => {
           return (
             <section key={el.id}>
@@ -69,9 +71,9 @@ const Crew = () => {
                   <span>flightEngineer</span>
                 </Link>
               </div>
-              <div>
+              <div className="Crew-info">
                 <h2>{el.role}</h2>
-                <p>{el.name}</p>
+                <h3>{el.name}</h3>
                 <p>{el.bio}</p>
               </div>
             </section>

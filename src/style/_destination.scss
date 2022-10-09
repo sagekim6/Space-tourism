@@ -17,6 +17,9 @@
     justify-content: space-evenly;
     a {
       color: var(--clr-accent);
+      span {
+        @include sr-only;
+      }
     }
   }
 
