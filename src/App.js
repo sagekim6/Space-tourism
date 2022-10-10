@@ -18,10 +18,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destinations/" element={<Destination />} />
-          <Route path="/destinations/:moon" element={<Destination />} />
+          {/* <Route path="/destinations/:moon" element={<Destination />} />
           <Route path="/destinations/:mars" element={<Destination />} />
           <Route path="/destinations/:europa" element={<Destination />} />
-          <Route path="/destinations/:titan" element={<Destination />} />
+          <Route path="/destinations/:titan" element={<Destination />} /> */}
           <Route path="/crews/" element={<Crew />} />
           <Route path="/crews/:commander" element={<Crew />} />
           <Route path="/crews/:missionSpecialist" element={<Crew />} />

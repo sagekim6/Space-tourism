@@ -15,8 +15,9 @@
     @include underlined-menu($bottom: bottom);
     display: flex;
     justify-content: space-evenly;
-    a {
+    button {
       color: var(--clr-accent);
+      background: transparent;
       span {
         @include sr-only;
       }

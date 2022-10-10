@@ -38,7 +38,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/destinations/:moon">
+            <Link to="/destinations/">
               <span aria-hidden="true">01</span>DESTINATION
             </Link>
           </li>
