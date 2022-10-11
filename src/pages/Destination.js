@@ -1,4 +1,3 @@
-// import { Link, useLocation } from "react-router-dom";
 import { memo, useState } from "react";
 import styled from "styled-components";
 
@@ -9,26 +8,47 @@ import ImageInfo from "../components/ImageInfo";
 import Mobile from "../assets/destination/background-destination-mobile.jpg";
 import Tablet from "../assets/destination/background-destination-tablet.jpg";
 import Desktop from "../assets/destination/background-destination-desktop.jpg";
-import PlanetInto from "../components/PlanetInto";
+import PlanetInfo from "../components/PlanetInfo";
 // Planet-image
-import moon from "../assets/destination/image-moon.png";
-import mars from "../assets/destination/image-mars.png";
-import europa from "../assets/destination/image-europa.png";
-import titan from "../assets/destination/image-titan.png";
+import Moon from "../assets/destination/image-moon.png";
+import Mars from "../assets/destination/image-mars.png";
+import Europa from "../assets/destination/image-europa.png";
+import Titan from "../assets/destination/image-titan.png";
 
 import data from "../data.json";
 
 const Destination = () => {
-  const [current, setCurrent] = useState("Moon");
+  const [current, setCurrent] = useState([data.destinations[0]]);
 
   const handleSelected = (e) => {
-    const getAtt = e.target.getAttribute("data-planet");
-    const names = data.destinations.map((el) => el.name);
-    const lists = document.querySelectorAll(".Destination-list button");
+    const lists = document.querySelectorAll(".Destination-list div");
 
     lists.forEach((el) => {
-      console.log(e.target.getAttribute("data-planet") === el.getAttribute);
+      if (el.getAttribute("aria-selected") === "true") {
+        el.setAttribute("aria-selected", "false");
+      }
+      if (e.target.getAttribute("aria-selected") === "false") {
+        e.target.setAttribute("aria-selected", "true");
+      }
     });
+
+    data.destinations.map((el) => {
+      if (e.target.getAttribute("data-planet") === el.name) {
+        setCurrent([el]);
+      }
+    });
+  };
+
+  const changePlanetImage = () => {
+    if (current[0].name === "Moon") {
+      return Moon;
+    } else if (current[0].name === "Mars") {
+      return Mars;
+    } else if (current[0].name === "Europa") {
+      return Europa;
+    } else if (current[0].name === "Titan") {
+      return Titan;
+    }
   };
 
   return (
@@ -39,26 +59,30 @@ const Destination = () => {
           <span>01</span>
           PICK YOUR DESTINATION
         </h1>
-        <ImageInfo />
-        <div onClick={handleSelected} className="Destination-list">
-          <button aria-selected="true" data-planet="Moon">
+        <ImageInfo src={changePlanetImage()} alt={current.name} />
+        <div
+          role={"tablist"}
+          onClick={handleSelected}
+          className="Destination-list"
+        >
+          <div aria-selected="true" data-planet="Moon">
             <span>Moon</span>
             Moon
-          </button>
-          <button aria-selected="false" data-planet="Mars">
+          </div>
+          <div aria-selected="false" data-planet="Mars">
             <span>Mars</span>
             Mars
-          </button>
-          <button aria-selected="false" data-planet="Europa">
+          </div>
+          <div aria-selected="false" data-planet="Europa">
             <span>Europa</span>
             Europa
-          </button>
-          <button aria-selected="false" data-planet="Titian">
-            <span>Titian</span>
-            Titian
-          </button>
+          </div>
+          <div aria-selected="false" data-planet="Titan">
+            <span>Titan</span>
+            Titan
+          </div>
         </div>
-        <PlanetInto />
+        <PlanetInfo current={current} />
       </main>
     </DestinationBg>
   );

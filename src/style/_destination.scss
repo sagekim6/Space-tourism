@@ -14,10 +14,11 @@
   .Destination-list {
     @include underlined-menu($bottom: bottom);
     display: flex;
+    width: 100%;
     justify-content: space-evenly;
-    button {
+    > div {
       color: var(--clr-accent);
-      background: transparent;
+      text-transform: uppercase;
       span {
         @include sr-only;
       }
@@ -90,7 +91,7 @@
 
     h1 {
       font-size: var(--fs-400);
-      margin-top: 1rem;
+      margin-top: 0;
       grid-area: title;
     }
 
@@ -99,14 +100,14 @@
     }
 
     .Destination-list {
-      justify-content: start;
       gap: 2rem;
-      max-width: 50ch;
+      justify-content: start;
     }
 
     article {
       text-align: left;
       grid-area: content;
+      width: 100%;
       h2 {
         font-size: var(--fs-700);
       }
@@ -117,8 +118,12 @@
       .Destination-meta {
         justify-content: start;
         padding-top: 1rem;
+        margin-top: 1.5rem;
+        > :first-child {
+          margin-right: 2rem;
+        }
         p {
-          font-size: var(--fs-400);
+          font-size: var(--fs-500);
         }
       }
     }
