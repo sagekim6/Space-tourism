@@ -1,46 +1,51 @@
-import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 import data from "../data.json";
 
 // Components
 import Header from "../components/Header";
+import CrewInfo from "../components/CrewInfo";
 import ImageInfo from "../components/ImageInfo";
 // Bg-image
 import Mobile from "../assets/crew/background-crew-mobile.jpg";
 import Tablet from "../assets/crew/background-crew-tablet.jpg";
 import Desktop from "../assets/crew/background-crew-desktop.jpg";
-import commander from "../assets/crew/image-douglas-hurley.png";
 // Crew-image
-import missionSpecialist from "../assets/crew/image-mark-shuttleworth.png";
-import pilot from "../assets/crew/image-victor-glover.png";
-import flightEngineer from "../assets/crew/image-anousheh-ansari.png";
+import Commander from "../assets/crew/image-douglas-hurley.png";
+import MissionSpecialist from "../assets/crew/image-mark-shuttleworth.png";
+import Pilot from "../assets/crew/image-victor-glover.png";
+import FlightEngineer from "../assets/crew/image-anousheh-ansari.png";
 
 const Crew = () => {
-  const location = useLocation();
-  const role = location.pathname.split(":")[1];
-  const info = data.crew;
+  const [currentCrew, setCurrentCrew] = useState([data.crew[0]]);
 
-  const crewInfo = () => {
-    if (role === "commander") {
-      return [info[0]];
-    } else if (role === "missionSpecialist") {
-      return [info[1]];
-    } else if (role === "pilot") {
-      return [info[2]];
-    } else if (role === "flightEngineer") {
-      return [info[3]];
-    }
+  const handleCrewInfo = (e) => {
+    const lists = document.querySelectorAll(".Crew-list button");
+    data.crew.forEach((el) => {
+      if (e.target.getAttribute("data-crew") === el.role) {
+        setCurrentCrew([el]);
+      }
+    });
+
+    lists.forEach((el) => {
+      if (el.getAttribute("aria-selected") === "true") {
+        el.setAttribute("aria-selected", "false");
+      }
+      if (e.target.getAttribute("aria-selected") === "false") {
+        e.target.setAttribute("aria-selected", "true");
+      }
+    });
   };
 
-  const onChangeCrewImages = () => {
-    if (role === "commander") {
-      return commander;
-    } else if (role === "missionSpecialist") {
-      return missionSpecialist;
-    } else if (role === "pilot") {
-      return pilot;
-    } else if (role === "flightEngineer") {
-      return flightEngineer;
+  const handleCrewImage = () => {
+    if (currentCrew[0].role === "Commander") {
+      return Commander;
+    } else if (currentCrew[0].role === "Mission Specialist") {
+      return MissionSpecialist;
+    } else if (currentCrew[0].role === "Pilot") {
+      return Pilot;
+    } else if (currentCrew[0].role === "Flight Engineer") {
+      return FlightEngineer;
     }
   };
 
@@ -52,33 +57,27 @@ const Crew = () => {
           <span>02</span>meet your crew
         </h1>
         <div className="Image-wrapper">
-          <ImageInfo src={onChangeCrewImages()} alt={role} />
+          <ImageInfo src={handleCrewImage()} alt={currentCrew[0].role} />
         </div>
-        {crewInfo().map((el) => {
-          return (
-            <section key={el.id}>
-              <div className="Crew-lists">
-                <Link to={"/crews/:commander"}>
-                  <span>commander</span>
-                </Link>
-                <Link to={"/crews/:missionSpecialist"}>
-                  <span>missionSpecialist</span>
-                </Link>
-                <Link to={"/crews/:pilot"}>
-                  <span>pilot</span>
-                </Link>
-                <Link to={"/crews/:flightEngineer"}>
-                  <span>flightEngineer</span>
-                </Link>
-              </div>
-              <div className="Crew-info">
-                <h2>{el.role}</h2>
-                <h3>{el.name}</h3>
-                <p>{el.bio}</p>
-              </div>
-            </section>
-          );
-        })}
+        <div role={"tablist"} className="Crew-list" onClick={handleCrewInfo}>
+          <button role="tab" aria-selected="true" data-crew="Commander">
+            <span>Commander</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            data-crew="Mission Specialist"
+          >
+            <span>Mission Specialist</span>
+          </button>
+          <button role="tab" aria-selected="false" data-crew="Pilot">
+            <span>Pilot</span>
+          </button>
+          <button role="tab" aria-selected="false" data-crew="Flight Engineer">
+            <span>Flight Engineer</span>
+          </button>
+        </div>
+        <CrewInfo currentCrew={currentCrew} />
       </main>
     </CrewBg>
   );

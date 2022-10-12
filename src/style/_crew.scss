@@ -4,48 +4,46 @@
 .Crew {
   display: grid;
   place-items: center;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
   padding-inline: 2rem;
   h1 {
     @include numbered-title;
   }
 
+  .Crew-list {
+    @include dot-menu;
+    button span {
+      @include sr-only;
+    }
+  }
+
   .Image-wrapper {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     img {
       max-width: 70%;
       margin: 0 auto;
     }
   }
 
-  section {
+  .Crew-info {
     text-align: center;
-    .Crew-lists {
-      @include dot-menu;
-      a span {
-        @include sr-only;
-      }
+    h2 {
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: var(--letter-spacing-2);
+      font-family: var(--ff-serif);
     }
 
-    .Crew-info {
-      margin-top: 1.5rem;
-      h2,
-      h3 {
-        text-transform: uppercase;
-        font-family: var(--ff-serif);
-      }
-      h2 {
-        color: rgba(255, 255, 255, 0.5);
-      }
-      h3 {
-        font-size: var(--fs-500);
-      }
-      p {
-        color: var(--clr-accent);
-        font-size: var(--fs-300);
-        padding-top: 1.5rem;
-        padding-bottom: 3rem;
-      }
+    h3 {
+      text-transform: uppercase;
+      font-family: var(--ff-serif);
+      font-size: var(--fs-500);
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: var(--clr-accent);
+      font-size: var(--fs-300);
+      margin-bottom: 4rem;
     }
   }
 }
@@ -55,34 +53,39 @@
     grid-template-areas:
       "title"
       "content"
+      "tab"
       "image";
+
     h1 {
       grid-area: title;
       justify-self: start;
-      margin-top: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     .Image-wrapper {
       grid-area: image;
     }
 
-    section {
+    .Crew-list {
+      grid-area: tab;
+    }
+
+    .Crew-info {
       grid-area: content;
-      display: flex;
-      flex-direction: column-reverse;
-      .Crew-info {
-        margin: 0;
-        h2 {
-          font-size: var(--fs-500);
-        }
-        h3 {
-          font-size: var(--fs-700);
-        }
-        p {
-          padding: 1rem 0 2rem 0;
-          display: inline-block;
-          width: 70%;
-        }
+      text-align: center;
+      h2 {
+        font-size: var(--fs-400);
+      }
+      h3 {
+        font-size: var(--fs-700);
+        margin-bottom: 0.5rem;
+      }
+      p {
+        margin-bottom: 0;
+        font-size: var(--fs-400);
+        max-width: 80%;
+        margin: 0 auto;
       }
     }
   }
@@ -92,31 +95,42 @@
   .Crew {
     grid-template-areas:
       "title image"
-      "content image";
+      "content image"
+      "tab image";
     row-gap: 0;
-    padding-inline: 4rem;
+    padding-inline: 4.5rem;
     h1 {
-      margin: 0;
+      margin-top: 0;
+      margin-bottom: 0;
       font-size: var(--fs-400);
+      align-self: start;
     }
 
     .Image-wrapper {
+      align-self: end;
       img {
-        max-width: 73%;
+        max-width: 65%;
       }
     }
-    section {
+
+    .Crew-list {
+      justify-self: start;
+      align-self: start;
+    }
+
+    .Crew-info {
       text-align: left;
-      .Crew-info {
-        h2 {
-          font-size: var(--fs-400);
-        }
-        h3 {
-          font-size: var(--fs-600);
-        }
-        p {
-          width: 70%;
-        }
+      align-self: start;
+      justify-self: start;
+      h2 {
+        font-size: var(--fs-400);
+      }
+      h3 {
+        font-size: var(--fs-600);
+      }
+      p {
+        max-width: 50ch;
+        margin: 0;
       }
     }
   }

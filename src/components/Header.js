@@ -43,7 +43,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/crews/:commander">
+            <Link to="/crews/">
               <span aria-hidden="true">02</span>CREW
             </Link>
           </li>

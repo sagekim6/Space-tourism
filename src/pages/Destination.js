@@ -21,7 +21,13 @@ const Destination = () => {
   const [current, setCurrent] = useState([data.destinations[0]]);
 
   const handleSelected = (e) => {
-    const lists = document.querySelectorAll(".Destination-list div");
+    const lists = document.querySelectorAll(".Destination-list button");
+
+    data.destinations.forEach((el) => {
+      if (e.target.getAttribute("data-planet") === el.name) {
+        setCurrent([el]);
+      }
+    });
 
     lists.forEach((el) => {
       if (el.getAttribute("aria-selected") === "true") {
@@ -29,12 +35,6 @@ const Destination = () => {
       }
       if (e.target.getAttribute("aria-selected") === "false") {
         e.target.setAttribute("aria-selected", "true");
-      }
-    });
-
-    data.destinations.map((el) => {
-      if (e.target.getAttribute("data-planet") === el.name) {
-        setCurrent([el]);
       }
     });
   };
@@ -65,22 +65,22 @@ const Destination = () => {
           onClick={handleSelected}
           className="Destination-list"
         >
-          <div aria-selected="true" data-planet="Moon">
+          <button role="tab" aria-selected="true" data-planet="Moon">
             <span>Moon</span>
             Moon
-          </div>
-          <div aria-selected="false" data-planet="Mars">
+          </button>
+          <button role="tab" aria-selected="false" data-planet="Mars">
             <span>Mars</span>
             Mars
-          </div>
-          <div aria-selected="false" data-planet="Europa">
+          </button>
+          <button role="tab" aria-selected="false" data-planet="Europa">
             <span>Europa</span>
             Europa
-          </div>
-          <div aria-selected="false" data-planet="Titan">
+          </button>
+          <button role="tab" aria-selected="false" data-planet="Titan">
             <span>Titan</span>
             Titan
-          </div>
+          </button>
         </div>
         <PlanetInfo current={current} />
       </main>

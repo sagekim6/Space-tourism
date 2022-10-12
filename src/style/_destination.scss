@@ -16,7 +16,8 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    > div {
+    button {
+      background: none;
       color: var(--clr-accent);
       text-transform: uppercase;
       span {
