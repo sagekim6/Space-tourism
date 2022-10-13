@@ -8,6 +8,8 @@ import Technology from "./pages/Technology";
 
 import "./style/app.scss";
 
+import data from "./data.json";
+
 function App() {
   return (
     <>
@@ -17,9 +19,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/destinations/" element={<Destination />} />
-          <Route path="/crews/" element={<Crew />} />
-          <Route path="/technologies/" element={<Technology />} />
+          <Route path="/destinations/" element={<Destination data={data} />} />
+          <Route path="/crews/" element={<Crew data={data} />} />
+          <Route path="/technologies/" element={<Technology data={data} />} />
         </Routes>
       </BrowserRouter>
     </>

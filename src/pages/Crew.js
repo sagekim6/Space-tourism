@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState } from "react";
-import data from "../data.json";
 
 // Components
 import Header from "../components/Header";
@@ -16,7 +15,7 @@ import MissionSpecialist from "../assets/crew/image-mark-shuttleworth.png";
 import Pilot from "../assets/crew/image-victor-glover.png";
 import FlightEngineer from "../assets/crew/image-anousheh-ansari.png";
 
-const Crew = () => {
+const Crew = ({ data }) => {
   const [currentCrew, setCurrentCrew] = useState([data.crew[0]]);
 
   const handleCrewInfo = (e) => {
@@ -31,10 +30,10 @@ const Crew = () => {
       if (el.getAttribute("aria-selected") === "true") {
         el.setAttribute("aria-selected", "false");
       }
-      if (e.target.getAttribute("aria-selected") === "false") {
-        e.target.setAttribute("aria-selected", "true");
-      }
     });
+    if (e.target.getAttribute("aria-selected") === "false") {
+      e.target.setAttribute("aria-selected", "true");
+    }
   };
 
   const handleCrewImage = () => {

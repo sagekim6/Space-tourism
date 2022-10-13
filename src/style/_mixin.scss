@@ -69,3 +69,32 @@
     background-color: rgba(255, 255, 255, 1);
   }
 }
+
+@mixin step-menu {
+  > * {
+    color: var(--clr-white);
+    font-family: var(--ff-serif);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    cursor: pointer;
+    padding-inline: 1rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+  > *:not(:first-child) {
+    margin-left: 1.5rem;
+  }
+  > *:hover {
+    border-color: var(--clr-white);
+  }
+  > *:focus {
+    color: var((--clr-black));
+    border-color: var(--clr-white);
+    background: var(--clr-white);
+  }
+  *[aria-selected="true"] {
+    color: var((--clr-black));
+    border-color: var(--clr-white);
+    background: var(--clr-white);
+  }
+}

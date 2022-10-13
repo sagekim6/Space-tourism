@@ -1,7 +1,8 @@
 @import "./reset.css";
-@import "./mixin";
-@import "./destination";
-@import "./crew";
+@import "./_mixin";
+@import "./_destination";
+@import "./_crew";
+@import "./_technology";
 
 :root {
   /* COLORS */
@@ -144,6 +145,9 @@ img {
     position: absolute;
     right: 1rem;
     top: 2rem;
+    span {
+      @include sr-only;
+    }
   }
 }
 
@@ -212,7 +216,7 @@ img {
 }
 
 /* ====================================== */
-/* Main Content                           */
+/*                 Home                   */
 /* ====================================== */
 .Home {
   display: grid;

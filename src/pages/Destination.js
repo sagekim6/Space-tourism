@@ -15,9 +15,7 @@ import Mars from "../assets/destination/image-mars.png";
 import Europa from "../assets/destination/image-europa.png";
 import Titan from "../assets/destination/image-titan.png";
 
-import data from "../data.json";
-
-const Destination = () => {
+const Destination = ({ data }) => {
   const [current, setCurrent] = useState([data.destinations[0]]);
 
   const handleSelected = (e) => {
@@ -33,10 +31,10 @@ const Destination = () => {
       if (el.getAttribute("aria-selected") === "true") {
         el.setAttribute("aria-selected", "false");
       }
-      if (e.target.getAttribute("aria-selected") === "false") {
-        e.target.setAttribute("aria-selected", "true");
-      }
     });
+    if (e.target.getAttribute("aria-selected") === "false") {
+      e.target.setAttribute("aria-selected", "true");
+    }
   };
 
   const changePlanetImage = () => {
