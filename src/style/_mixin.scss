@@ -70,19 +70,23 @@
   }
 }
 
-@mixin step-menu {
+@mixin step-menu($margin-left: 1.5rem, $margin-bottom: 0) {
   > * {
     color: var(--clr-white);
     font-family: var(--ff-serif);
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: none;
     cursor: pointer;
-    padding-inline: 1rem;
+    padding-inline: 1.2rem;
     aspect-ratio: 1;
     border-radius: 50%;
+    font-size: 1.2rem;
   }
   > *:not(:first-child) {
-    margin-left: 1.5rem;
+    margin-left: $margin-left;
+  }
+  > *:not(:last-child) {
+    margin-bottom: $margin-bottom;
   }
   > *:hover {
     border-color: var(--clr-white);

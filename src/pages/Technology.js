@@ -46,7 +46,7 @@ const Technology = ({ data }) => {
           <span>03</span>
           space launch 101
         </h1>
-        <ImageInfo />
+        <ImageInfo src={VehicleLandScape} alt={"Launch vehicle"} />
         <div className="Launch-step" role={"tablist"} onClick={showTechInfo}>
           <button role={"tab"} aria-selected="true" data-tech="Launch vehicle">
             <span>Launch vehicle</span>1

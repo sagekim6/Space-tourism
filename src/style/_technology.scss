@@ -2,15 +2,99 @@
 /*              Technology                */
 /* ====================================== */
 .Technology {
+  display: grid;
+  text-align: center;
   h1 {
     @include numbered-title;
+    margin-bottom: 1.5rem;
   }
 
   .Launch-step {
     @include step-menu;
+    align-self: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     button {
       > :first-child {
         @include sr-only;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  section {
+    padding-inline: 2rem;
+    h3 {
+      color: var(--clr-accent);
+      font-family: var(--ff-cond);
+      text-transform: uppercase;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      font-family: var(--ff-serif);
+      text-transform: uppercase;
+      font-size: var(--fs-600);
+    }
+    p {
+      color: var(--clr-accent);
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+@media (min-width: 35em) {
+  .Technology {
+    h1 {
+      justify-self: start;
+      margin: 1.5rem;
+    }
+
+    section h2 {
+      font-size: var(--fs-700);
+    }
+  }
+}
+
+@media (min-width: 45em) {
+  .Technology {
+    margin-left: 4rem;
+    grid-template-areas:
+      "title title title"
+      "tab content image"
+      "tab content image";
+    h1 {
+      grid-area: title;
+      margin: 0;
+    }
+
+    img {
+      grid-area: image;
+    }
+
+    .Launch-step {
+      grid-area: tab;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      @include step-menu($margin-left: 0, $margin-bottom: 1.5rem);
+    }
+
+    section {
+      grid-area: content;
+      text-align: left;
+      h3 {
+        font-size: var(--fs-300);
+      }
+      h2 {
+        font-size: var(--fs-600);
+      }
+      p {
+        font-size: var(--fs-300);
+        margin-bottom: 0;
+        max-width: 70%;
       }
     }
   }
