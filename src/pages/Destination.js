@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import styled from "styled-components";
 
 // Components
@@ -18,26 +18,29 @@ import Titan from "../assets/destination/image-titan.png";
 const Destination = ({ data }) => {
   const [current, setCurrent] = useState([data.destinations[0]]);
 
-  const handleSelected = (e) => {
-    const lists = document.querySelectorAll(".Destination-list button");
+  const handleSelected = useCallback(
+    (e) => {
+      const lists = document.querySelectorAll(".Destination-list button");
 
-    data.destinations.forEach((el) => {
-      if (e.target.getAttribute("data-planet") === el.name) {
-        setCurrent([el]);
+      data.destinations.forEach((el) => {
+        if (e.target.getAttribute("data-planet") === el.name) {
+          setCurrent([el]);
+        }
+      });
+
+      lists.forEach((el) => {
+        if (el.getAttribute("aria-selected") === "true") {
+          el.setAttribute("aria-selected", "false");
+        }
+      });
+      if (e.target.getAttribute("aria-selected") === "false") {
+        e.target.setAttribute("aria-selected", "true");
       }
-    });
+    },
+    [data.destinations]
+  );
 
-    lists.forEach((el) => {
-      if (el.getAttribute("aria-selected") === "true") {
-        el.setAttribute("aria-selected", "false");
-      }
-    });
-    if (e.target.getAttribute("aria-selected") === "false") {
-      e.target.setAttribute("aria-selected", "true");
-    }
-  };
-
-  const changePlanetImage = () => {
+  const changePlanetImage = useCallback(() => {
     if (current[0].name === "Moon") {
       return Moon;
     } else if (current[0].name === "Mars") {
@@ -47,7 +50,7 @@ const Destination = ({ data }) => {
     } else if (current[0].name === "Titan") {
       return Titan;
     }
-  };
+  }, [current]);
 
   return (
     <DestinationBg className="bg-container">

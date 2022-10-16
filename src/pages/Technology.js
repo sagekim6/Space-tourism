@@ -1,42 +1,54 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import styled from "styled-components";
 // Component
 import Header from "../components/Header";
-import ImageInfo from "../components/ImageInfo";
 // Bg-image
 import Mobile from "../assets/technology/background-technology-mobile.jpg";
 import Tablet from "../assets/technology/background-technology-tablet.jpg";
 import Desktop from "../assets/technology/background-technology-desktop.jpg";
-// step image - 모바일, 타블렛은 Portrait으로 데스크탑은 LandScape 이미지로 하기
-import VehicleLandScape from "../assets/technology/image-launch-vehicle-landscape.jpg";
+// step image - 모바일, 타블렛은 LandScape으로 데스크탑은 Portrait 이미지로 하기
+import LaunchVehicle from "../assets/technology/image-launch-vehicle-landscape.jpg";
+import Spaceport from "../assets/technology/image-space-capsule-landscape.jpg";
+import SpaceCapsule from "../assets/technology/image-spaceport-landscape.jpg";
 import VehiclePortrait from "../assets/technology/image-launch-vehicle-portrait.jpg";
-import SpaceportLandscape from "../assets/technology/image-space-capsule-landscape.jpg";
 import SpaceportPortrait from "../assets/technology/image-space-capsule-portrait.jpg";
-import SpaceCapsuleLandScape from "../assets/technology/image-spaceport-landscape.jpg";
 import SpaceCapsulePortrait from "../assets/technology/image-spaceport-portrait.jpg";
 
 const Technology = ({ data }) => {
   const [currentStep, setCurrentStep] = useState([data.technology[0]]);
 
-  const showTechInfo = (e) => {
-    const dataTech = e.target.getAttribute("data-tech");
-    const LaunchStep = document.querySelectorAll(".Launch-step button");
+  const showTechInfo = useCallback(
+    (e) => {
+      const dataTech = e.target.getAttribute("data-tech");
+      const LaunchStep = document.querySelectorAll(".Launch-step button");
 
-    data.technology.forEach((el) => {
-      if (dataTech === el.name) {
-        setCurrentStep([el]);
-      }
-    });
+      data.technology.forEach((el) => {
+        if (dataTech === el.name) {
+          setCurrentStep([el]);
+        }
+      });
 
-    LaunchStep.forEach((el) => {
-      if (el.getAttribute("aria-selected") === "true") {
-        el.setAttribute("aria-selected", "false");
+      LaunchStep.forEach((el) => {
+        if (el.getAttribute("aria-selected") === "true") {
+          el.setAttribute("aria-selected", "false");
+        }
+      });
+      if (e.target.getAttribute("aria-selected") === "false") {
+        e.target.setAttribute("aria-selected", "true");
       }
-    });
-    if (e.target.getAttribute("aria-selected") === "false") {
-      e.target.setAttribute("aria-selected", "true");
+    },
+    [data.technology]
+  );
+
+  const handleTechImage = useCallback(() => {
+    if (currentStep[0].name === "Launch vehicle") {
+      return [LaunchVehicle, VehiclePortrait];
+    } else if (currentStep[0].name === "Spaceport") {
+      return [SpaceCapsule, SpaceCapsulePortrait];
+    } else if (currentStep[0].name === "Space capsule") {
+      return [Spaceport, SpaceportPortrait];
     }
-  };
+  }, [currentStep]);
 
   return (
     <TechnologyBg id="content" className="bg-container">
@@ -46,7 +58,10 @@ const Technology = ({ data }) => {
           <span>03</span>
           space launch 101
         </h1>
-        <ImageInfo src={VehicleLandScape} alt={"Launch vehicle"} />
+        <picture>
+          <source srcSet={handleTechImage()[1]} media="(min-width: 45em)" />
+          <img src={handleTechImage()[0]} alt={currentStep[0].name} />
+        </picture>
         <div className="Launch-step" role={"tablist"} onClick={showTechInfo}>
           <button role={"tab"} aria-selected="true" data-tech="Launch vehicle">
             <span>Launch vehicle</span>1

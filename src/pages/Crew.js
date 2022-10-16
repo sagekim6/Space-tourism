@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 
 // Components
 import Header from "../components/Header";
@@ -18,25 +18,28 @@ import FlightEngineer from "../assets/crew/image-anousheh-ansari.png";
 const Crew = ({ data }) => {
   const [currentCrew, setCurrentCrew] = useState([data.crew[0]]);
 
-  const handleCrewInfo = (e) => {
-    const lists = document.querySelectorAll(".Crew-list button");
-    data.crew.forEach((el) => {
-      if (e.target.getAttribute("data-crew") === el.role) {
-        setCurrentCrew([el]);
-      }
-    });
+  const handleCrewInfo = useCallback(
+    (e) => {
+      const lists = document.querySelectorAll(".Crew-list button");
+      data.crew.forEach((el) => {
+        if (e.target.getAttribute("data-crew") === el.role) {
+          setCurrentCrew([el]);
+        }
+      });
 
-    lists.forEach((el) => {
-      if (el.getAttribute("aria-selected") === "true") {
-        el.setAttribute("aria-selected", "false");
+      lists.forEach((el) => {
+        if (el.getAttribute("aria-selected") === "true") {
+          el.setAttribute("aria-selected", "false");
+        }
+      });
+      if (e.target.getAttribute("aria-selected") === "false") {
+        e.target.setAttribute("aria-selected", "true");
       }
-    });
-    if (e.target.getAttribute("aria-selected") === "false") {
-      e.target.setAttribute("aria-selected", "true");
-    }
-  };
+    },
+    [data.crew]
+  );
 
-  const handleCrewImage = () => {
+  const handleCrewImage = useCallback(() => {
     if (currentCrew[0].role === "Commander") {
       return Commander;
     } else if (currentCrew[0].role === "Mission Specialist") {
@@ -46,7 +49,7 @@ const Crew = ({ data }) => {
     } else if (currentCrew[0].role === "Flight Engineer") {
       return FlightEngineer;
     }
-  };
+  }, [currentCrew]);
 
   return (
     <CrewBg id="content" className="bg-container">
@@ -93,4 +96,4 @@ const CrewBg = styled.div`
   }
 `;
 
-export default Crew;
+export default memo(Crew);

@@ -21,10 +21,6 @@
     }
   }
 
-  img {
-    max-width: 100%;
-  }
-
   section {
     padding-inline: 2rem;
     h3 {
@@ -52,8 +48,14 @@
       margin: 1.5rem;
     }
 
-    section h2 {
-      font-size: var(--fs-700);
+    section {
+      h2 {
+        font-size: var(--fs-700);
+      }
+      p {
+        max-width: 50ch;
+        margin: 0 auto 4rem auto;
+      }
     }
   }
 }
@@ -65,13 +67,25 @@
       "title title title"
       "tab content image"
       "tab content image";
+    grid-template-columns: min-content 1fr 1fr;
+    grid-template-rows: min-content 1fr;
     h1 {
       grid-area: title;
       margin: 0;
+      font-size: var(--fs-400);
     }
 
-    img {
-      grid-area: image;
+    picture {
+      display: block;
+      ::after {
+        content: "";
+        clear: both;
+      }
+      img {
+        grid-area: image;
+        max-width: 70%;
+        float: right;
+      }
     }
 
     .Launch-step {
@@ -79,12 +93,16 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      margin: 0;
+      justify-content: center;
       @include step-menu($margin-left: 0, $margin-bottom: 1.5rem);
     }
 
     section {
       grid-area: content;
       text-align: left;
+      padding: 0 0 0 4rem;
+      align-self: center;
       h3 {
         font-size: var(--fs-300);
       }
@@ -93,8 +111,7 @@
       }
       p {
         font-size: var(--fs-300);
-        margin-bottom: 0;
-        max-width: 70%;
+        margin: 0;
       }
     }
   }
