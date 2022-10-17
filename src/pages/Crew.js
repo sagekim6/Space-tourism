@@ -3,7 +3,6 @@ import { useState, memo, useCallback } from "react";
 
 // Components
 import Header from "../components/Header";
-import CrewInfo from "../components/CrewInfo";
 import ImageInfo from "../components/ImageInfo";
 // Bg-image
 import Mobile from "../assets/crew/background-crew-mobile.jpg";
@@ -79,7 +78,15 @@ const Crew = ({ data }) => {
             <span>Flight Engineer</span>
           </button>
         </div>
-        <CrewInfo currentCrew={currentCrew} />
+        {currentCrew.map((el) => {
+          return (
+            <section className="Crew-info" key={el.id}>
+              <h2>{el.role}</h2>
+              <h3>{el.name}</h3>
+              <p>{el.bio}</p>
+            </section>
+          );
+        })}
       </main>
     </CrewBg>
   );

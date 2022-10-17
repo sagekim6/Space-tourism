@@ -8,7 +8,6 @@ import ImageInfo from "../components/ImageInfo";
 import Mobile from "../assets/destination/background-destination-mobile.jpg";
 import Tablet from "../assets/destination/background-destination-tablet.jpg";
 import Desktop from "../assets/destination/background-destination-desktop.jpg";
-import PlanetInfo from "../components/PlanetInfo";
 // Planet-image
 import Moon from "../assets/destination/image-moon.png";
 import Mars from "../assets/destination/image-mars.png";
@@ -83,7 +82,25 @@ const Destination = ({ data }) => {
             Titan
           </button>
         </div>
-        <PlanetInfo current={current} />
+        {/* <PlanetInfo current={current} /> */}
+        {current.map((el) => {
+          return (
+            <article key={el.id}>
+              <h2>{el.name}</h2>
+              <p>{el.description}</p>
+              <div className="Destination-meta">
+                <div>
+                  <h3>AVG.DISTANCE</h3>
+                  <p>{el.distance}</p>
+                </div>
+                <div>
+                  <h3>EST.TRAVEL TIME</h3>
+                  <p>{el.travel}</p>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </main>
     </DestinationBg>
   );

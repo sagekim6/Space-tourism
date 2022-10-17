@@ -76,15 +76,12 @@
     }
 
     picture {
-      display: block;
-      ::after {
-        content: "";
-        clear: both;
-      }
+      display: flex;
+      justify-content: end;
+      align-items: center;
       img {
         grid-area: image;
         max-width: 70%;
-        float: right;
       }
     }
 
