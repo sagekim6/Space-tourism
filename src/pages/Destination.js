@@ -82,7 +82,6 @@ const Destination = ({ data }) => {
             Titan
           </button>
         </div>
-        {/* <PlanetInfo current={current} /> */}
         {current.map((el) => {
           return (
             <article key={el.id}>

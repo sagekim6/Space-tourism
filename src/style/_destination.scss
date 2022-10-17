@@ -68,7 +68,7 @@
 @media (min-width: 35em) {
   .Destination {
     h1 {
-      justify-self: start;
+      justify-self: flex-start;
       margin-top: 2rem;
     }
 
@@ -102,7 +102,7 @@
 
     .Destination-list {
       gap: 2rem;
-      justify-content: start;
+      justify-content: flex-start;
     }
 
     article {
@@ -117,7 +117,7 @@
         max-width: 50ch;
       }
       .Destination-meta {
-        justify-content: start;
+        justify-content: flex-start;
         padding-top: 1rem;
         margin-top: 1.5rem;
         > :first-child {

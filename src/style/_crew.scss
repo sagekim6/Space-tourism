@@ -58,7 +58,7 @@
 
     h1 {
       grid-area: title;
-      justify-self: start;
+      justify-self: flex-start;
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
@@ -103,25 +103,25 @@
       margin-top: 0;
       margin-bottom: 0;
       font-size: var(--fs-400);
-      align-self: start;
+      align-self: flex-start;
     }
 
     .Image-wrapper {
-      align-self: end;
+      align-self: flex-end;
       img {
         max-width: 65%;
       }
     }
 
     .Crew-list {
-      justify-self: start;
-      align-self: start;
+      justify-self: flex-start;
+      align-self: flex-start;
     }
 
     .Crew-info {
       text-align: left;
-      align-self: start;
-      justify-self: start;
+      justify-self: flex-start;
+      align-self: flex-start;
       h2 {
         font-size: var(--fs-400);
       }

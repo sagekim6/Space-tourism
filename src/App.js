@@ -1,14 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// Components
+import "./style/app.scss";
+import data from "./data.json";
+// Pages
 import Home from "./pages/Home";
 import Crew from "./pages/Crew";
 import Destination from "./pages/Destination";
 import Technology from "./pages/Technology";
-
-import "./style/app.scss";
-
-import data from "./data.json";
 
 function App() {
   return (
