@@ -257,6 +257,7 @@ img {
     aspect-ratio: 1;
     place-items: center;
     z-index: 1;
+    margin-bottom: 4rem;
   }
 
   .Explore-btn::after {
@@ -309,6 +310,9 @@ img {
     }
     p {
       font-size: var(--fs-300);
+    }
+    .Explore-btn {
+      margin-bottom: 0;
     }
   }
 }

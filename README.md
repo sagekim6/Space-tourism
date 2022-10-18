@@ -1,3 +1,3 @@
 # Space tourism
 
-## So, you want to travel to Space?
+<img src="./src/assets/shared/og-image.png" alt="as" width="80%" />

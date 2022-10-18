@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import Mobile from "../assets/home/background-home-mobile.jpg";
@@ -21,7 +22,7 @@ const Home = () => {
           </p>
         </div>
         <div>
-          <a className="Explore-btn" href="#">
+          <a className="Explore-btn" href="#" tabIndex="0">
             Explore
           </a>
         </div>
@@ -42,4 +43,4 @@ const HomeBg = styled.div`
   }
 `;
 
-export default Home;
+export default memo(Home);

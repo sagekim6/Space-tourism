@@ -63,13 +63,28 @@ const Technology = ({ data }) => {
           <img src={handleTechImage()[0]} alt={currentStep[0].name} />
         </picture>
         <div className="Launch-step" role={"tablist"} onClick={showTechInfo}>
-          <button role={"tab"} aria-selected="true" data-tech="Launch vehicle">
+          <button
+            role={"tab"}
+            aria-selected="true"
+            data-tech="Launch vehicle"
+            tabIndex="0"
+          >
             <span>Launch vehicle</span>1
           </button>
-          <button role={"tab"} aria-selected="false" data-tech="Spaceport">
+          <button
+            role={"tab"}
+            aria-selected="false"
+            data-tech="Spaceport"
+            tabIndex="0"
+          >
             <span>Spaceport</span>2
           </button>
-          <button role={"tab"} aria-selected="false" data-tech="Space capsule">
+          <button
+            role={"tab"}
+            aria-selected="false"
+            data-tech="Space capsule"
+            tabIndex="0"
+          >
             <span>Space capsule</span>3
           </button>
         </div>

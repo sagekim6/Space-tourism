@@ -61,20 +61,36 @@ const Crew = ({ data }) => {
           <ImageInfo src={handleCrewImage()} alt={currentCrew[0].role} />
         </div>
         <div role={"tablist"} className="Crew-list" onClick={handleCrewInfo}>
-          <button role="tab" aria-selected="true" data-crew="Commander">
+          <button
+            role="tab"
+            aria-selected="true"
+            data-crew="Commander"
+            tabIndex="0"
+          >
             <span>Commander</span>
           </button>
           <button
             role="tab"
             aria-selected="false"
             data-crew="Mission Specialist"
+            tabIndex="0"
           >
             <span>Mission Specialist</span>
           </button>
-          <button role="tab" aria-selected="false" data-crew="Pilot">
+          <button
+            role="tab"
+            aria-selected="false"
+            data-crew="Pilot"
+            tabIndex="0"
+          >
             <span>Pilot</span>
           </button>
-          <button role="tab" aria-selected="false" data-crew="Flight Engineer">
+          <button
+            role="tab"
+            aria-selected="false"
+            data-crew="Flight Engineer"
+            tabIndex="0"
+          >
             <span>Flight Engineer</span>
           </button>
         </div>
