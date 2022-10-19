@@ -22,9 +22,9 @@ const Home = () => {
           </p>
         </div>
         <div>
-          <a className="Explore-btn" href="#" tabIndex="0">
+          <button className="Explore-btn" tabIndex="0">
             Explore
-          </a>
+          </button>
         </div>
       </main>
     </HomeBg>

@@ -258,6 +258,8 @@ img {
     place-items: center;
     z-index: 1;
     margin-bottom: 4rem;
+    border: none;
+    cursor: pointer;
   }
 
   .Explore-btn::after {

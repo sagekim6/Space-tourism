@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Mobile from "../assets/technology/background-technology-mobile.jpg";
 import Tablet from "../assets/technology/background-technology-tablet.jpg";
 import Desktop from "../assets/technology/background-technology-desktop.jpg";
-// step image - 모바일, 타블렛은 LandScape으로 데스크탑은 Portrait 이미지로 하기
+// step image
 import LaunchVehicle from "../assets/technology/image-launch-vehicle-landscape.jpg";
 import Spaceport from "../assets/technology/image-space-capsule-landscape.jpg";
 import SpaceCapsule from "../assets/technology/image-spaceport-landscape.jpg";
@@ -51,9 +51,9 @@ const Technology = ({ data }) => {
   }, [currentStep]);
 
   return (
-    <TechnologyBg id="content" className="bg-container">
+    <TechnologyBg className="bg-container">
       <Header />
-      <main className="Technology">
+      <main className="Technology" id="content">
         <h1>
           <span>03</span>
           space launch 101

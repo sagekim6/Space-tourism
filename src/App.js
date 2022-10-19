@@ -10,7 +10,7 @@ import Technology from "./pages/Technology";
 function App() {
   return (
     <>
-      <a href="#main" className="skip-to-content">
+      <a href="#content" className="skip-to-content">
         skip to content
       </a>
       <BrowserRouter>

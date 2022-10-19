@@ -51,9 +51,9 @@ const Crew = ({ data }) => {
   }, [currentCrew]);
 
   return (
-    <CrewBg id="content" className="bg-container">
+    <CrewBg className="bg-container">
       <Header />
-      <main className="Crew">
+      <main className="Crew" id="content">
         <h1>
           <span>02</span>meet your crew
         </h1>
