@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Mobile from "../assets/technology/background-technology-mobile.jpg";
 import Tablet from "../assets/technology/background-technology-tablet.jpg";
 import Desktop from "../assets/technology/background-technology-desktop.jpg";
-// step image
+// tech-image
 import LaunchVehicle from "../assets/technology/image-launch-vehicle-landscape.jpg";
 import Spaceport from "../assets/technology/image-space-capsule-landscape.jpg";
 import SpaceCapsule from "../assets/technology/image-spaceport-landscape.jpg";
@@ -17,7 +17,7 @@ import SpaceCapsulePortrait from "../assets/technology/image-spaceport-portrait.
 const Technology = ({ data }) => {
   const [currentStep, setCurrentStep] = useState([data.technology[0]]);
 
-  const showTechInfo = useCallback(
+  const handleTechInfo = useCallback(
     (e) => {
       const dataTech = e.target.getAttribute("data-tech");
       const LaunchStep = document.querySelectorAll(".Launch-step button");
@@ -40,7 +40,7 @@ const Technology = ({ data }) => {
     [data.technology]
   );
 
-  const handleTechImage = useCallback(() => {
+  const changeTechImage = useCallback(() => {
     if (currentStep[0].name === "Launch vehicle") {
       return [LaunchVehicle, VehiclePortrait];
     } else if (currentStep[0].name === "Spaceport") {
@@ -59,10 +59,10 @@ const Technology = ({ data }) => {
           space launch 101
         </h1>
         <picture>
-          <source srcSet={handleTechImage()[1]} media="(min-width: 45em)" />
-          <img src={handleTechImage()[0]} alt={currentStep[0].name} />
+          <source srcSet={changeTechImage()[1]} media="(min-width: 45em)" />
+          <img src={changeTechImage()[0]} alt={currentStep[0].name} />
         </picture>
-        <div className="Launch-step" role={"tablist"} onClick={showTechInfo}>
+        <div className="Launch-step" role={"tablist"} onClick={handleTechInfo}>
           <button
             role={"tab"}
             aria-selected="true"

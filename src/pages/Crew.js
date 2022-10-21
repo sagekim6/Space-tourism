@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState, memo, useCallback } from "react";
-
 // Components
 import Header from "../components/Header";
 import ImageInfo from "../components/ImageInfo";
@@ -38,7 +37,7 @@ const Crew = ({ data }) => {
     [data.crew]
   );
 
-  const handleCrewImage = useCallback(() => {
+  const changeCrewImage = useCallback(() => {
     if (currentCrew[0].role === "Commander") {
       return Commander;
     } else if (currentCrew[0].role === "Mission Specialist") {
@@ -58,7 +57,7 @@ const Crew = ({ data }) => {
           <span>02</span>meet your crew
         </h1>
         <div className="Image-wrapper">
-          <ImageInfo src={handleCrewImage()} alt={currentCrew[0].role} />
+          <ImageInfo src={changeCrewImage()} alt={currentCrew[0].role} />
         </div>
         <div role={"tablist"} className="Crew-list" onClick={handleCrewInfo}>
           <button

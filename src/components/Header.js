@@ -5,6 +5,12 @@ import CloseMenu from "../assets/shared/icon-close.svg";
 import { memo, useCallback } from "react";
 
 const Header = () => {
+  /**
+   *  클릭 이벤트 발생시 상태 및 메뉴 이미지 토글
+   *  data-visible="false" <-> true
+   *  aria-expended="false" <-> true
+   *  햄버거 <-> CloseMenu로 변경
+   */
   const handleMobileMenuVisibiliy = useCallback(() => {
     const ul = document.querySelector(".Primary-nav");
     const mobileMenu = document.querySelector(".Mobile-menu-toggle");

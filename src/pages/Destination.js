@@ -1,6 +1,5 @@
 import { memo, useState, useCallback } from "react";
 import styled from "styled-components";
-
 // Components
 import Header from "../components/Header";
 import ImageInfo from "../components/ImageInfo";
