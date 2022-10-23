@@ -23,7 +23,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://sagekim6.github.io/Space-tourism/",
+  "homepage": "https://sagekim6.github.io/space-tourism/",
   "eslintConfig": {
     "extends": [
       "react-app",

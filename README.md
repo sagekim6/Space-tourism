@@ -26,7 +26,7 @@
 ### Links
 
 - Go to Repository: [Github Repository](https://github.com/sagekim6/Space-tourism.git)
-- Live Site URL: [url]()
+- Live Site URL: [https://sagekim6.github.io/Space-tourism/](https://sagekim6.github.io/Space-tourism/)
 
 ## My process
 
