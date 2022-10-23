@@ -13,7 +13,7 @@ function App() {
       <a href="#content" className="skip-to-content">
         skip to content
       </a>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destinations/" element={<Destination data={data} />} />
