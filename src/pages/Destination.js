@@ -106,11 +106,11 @@ const Destination = ({ data }) => {
 
 const DestinationBg = styled.div`
   background-image: url("${Mobile}");
-  @media (min-width: 35rem) {
+  @media (min-width: 35em) {
     background-image: url("${Tablet}");
     background-position: center center;
   }
-  @media (min-width: 45rem) {
+  @media (min-width: 45em) {
     background-image: url("${Desktop}");
   }
 `;

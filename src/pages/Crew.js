@@ -109,11 +109,11 @@ const Crew = ({ data }) => {
 
 const CrewBg = styled.div`
   background-image: url("${Mobile}");
-  @media (min-width: 35rem) {
+  @media (min-width: 35em) {
     background-position: center center;
     background-image: url("${Tablet}");
   }
-  @media (min-width: 45rem) {
+  @media (min-width: 45em) {
     background-image: url("${Desktop}");
   }
 `;
