@@ -10,7 +10,6 @@
   - [Built with](#built-with)
   - [Advanced feature](#Advanced-feature)
   - [What I learned](#what-i-learned)
-  - [개선사항](#개선사항)
 
 ## Overview
 
@@ -228,7 +227,3 @@ Technology 컴포넌트에서 mobile과 tablet 크기에서 사용되는 이미�
   <img src="{changeTechImage()[0]}" alt="{currentStep[0].name}" />
 </picture>
 ```
-
-### 개선사항
-
-1. 배경 이미지가 렌더링 되는 속도 향상하기

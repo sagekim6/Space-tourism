@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./style/app.scss";
 import data from "./data.json";
 // Pages
@@ -13,14 +13,14 @@ function App() {
       <a href="#content" className="skip-to-content">
         skip to content
       </a>
-      <HashRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destinations/" element={<Destination data={data} />} />
           <Route path="/crews/" element={<Crew data={data} />} />
           <Route path="/technologies/" element={<Technology data={data} />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }
