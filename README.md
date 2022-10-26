@@ -49,7 +49,7 @@
 
 #### 1. React-router를 사용한 페이지 이동
 
-![router](https://user-images.githubusercontent.com/94341508/196963300-87d89558-312b-40a5-9333-165fa86bfbc3.gif)
+![router-cut](https://user-images.githubusercontent.com/94341508/197944938-a897b0b0-e46b-442d-a8b5-158e8e5c5942.gif)
 
 **1-1.** App 컴포넌트에서 URL 경로를 지정하였습니다.
 
